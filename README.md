@@ -85,3 +85,8 @@ To retrieve data from remote in future.
 ```bash
 dvc pull
 ```
+
+To list all the files being tracked by dvc
+```bash
+dvc list --dvc-only -R .dvc
+```
