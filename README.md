@@ -48,9 +48,9 @@ git branch -M main
 ```bash
 git push origin main
 ```
-dvc.yaml file tells dvc the pipeline it has to follow.
-once we run the pipeline, dvc will run the "cmd" if there is a change in dependency "deps" and will store the output in "outs"
-When we run the dvc stage, it creeates dvc.lock which tracks all the dependencies. A stage will only run if its dependency changes, if there is no change, dvc will skip the stage.
+- dvc.yaml file tells dvc the pipeline it has to follow.
+- once we run the pipeline, dvc will run the "cmd" if there is a change in dependency "deps" and will store the output in "outs"
+- When we run the dvc stage, it creeates dvc.lock which tracks all the dependencies. A stage will only run if its dependency changes, if there is no change, dvc will skip the stage.
 ```bash
 dvc repro
 ```
