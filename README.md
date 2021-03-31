@@ -54,3 +54,34 @@ git push origin main
 ```bash
 dvc repro
 ```
+
+Add remote storage for all the tracked data.
+```bash
+dvc remote add -d storage gdrive://<DRIVE ID>
+git add .dvc/config && git commit -m "Configure remote storage"
+```
+- Here the drive ID is last part of the google drive link.
+
+Pushing the data to remote storage
+```bash
+dvc push
+```
+- This step will ask you to authenticate yourself by clicking on the link which will appear in the terminal.
+- Once you allow dvc to read and write on gdrive it'll give an access token which you'll paste in the terminal.
+- Now the copy of your data will be pushed to the gdrive
+- Above step will create a gdrive credential file
+- Find this credentials in the given path -
+```bash
+.dvc >> temp >> gdrive-user-credentials.json
+```
+- Now to add the secrets in your github repo -
+    - Go to settings
+    - secrets
+    - Click on add secrets
+    - Give name of secretes
+    - Paste the json file content from ```gdrive-user-credentials.json ```
+
+To retrieve data from remote in future.
+```bash
+dvc pull
+```
