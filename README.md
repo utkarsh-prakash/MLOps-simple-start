@@ -90,3 +90,16 @@ To list all the files being tracked by dvc
 ```bash
 dvc list --dvc-only -R .dvc
 ```
+
+DVC is tracking all the parameters and metrics which we have declared in dvc.yaml
+```bash
+dvc params show
+dvc metrics show
+```
+These commands will show which params and metrics are being tracked and what are the values.
+```bash
+dvc params diff
+dvc metrics diff
+```
+When we update the params and rerun with dvc repro, we will get new metrics. Above mentioned commands will give us the old and new values of these parameters and Metrics.
+- After a run, dvc.lock is modified and thus we need to dvc push to update the remote storage.
