@@ -157,3 +157,4 @@ tox
 ```bash
 tox -r
 ```  
+- We can also add some flake8 commands in tox test environment to ensure that there is no syntax error or unused variable names.
