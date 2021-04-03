@@ -103,3 +103,49 @@ dvc metrics diff
 ```
 When we update the params and rerun with dvc repro, we will get new metrics. Above mentioned commands will give us the old and new values of these parameters and Metrics.
 - After a run, dvc.lock is modified and thus we need to dvc push to update the remote storage.
+
+pytest
+```bash
+pytest -v
+```
+
+tox<br>
+tox can be used to set end to end environment and run our codes on the environment. For running tox, we will have to create tox.ini file.
+```bash
+[tox]
+envlist = py37
+```
+- We set up a python 3.7 environment using this command
+- for testing multiple environments : envlist = py27, py36
+```bash
+skipsdist = True
+```
+- This is set to true if we have not converted our folder to a package or have NOT created setup.py file<br>
+setup.py
+- By creating this file we can convert the folders with __init__.py as a package.
+- In the setup.py file the folder name should be given under "name". The folder should have __init__.py
+- Now we can install this folder as a package to any environment using the below given command.
+```bash
+pip install -e .
+```
+- If we want to make own package with tar and wheel
+```bash
+python setup.py sdist bdist_wheel
+```
+- If we have the setup file we can run without skipsdist
+```bash
+[testenv]
+deps = -rrequirements.txt
+commands = 
+    pytest -v
+```
+- -rrequirements.txt will recursively read the required packages.
+- For running a tox file.
+```bash
+tox
+```
+- There will be one time tox environment setup
+- In case there is update in requirement file and tox environment setup need update, we can run rebuilding
+```bash
+tox -r
+```  
