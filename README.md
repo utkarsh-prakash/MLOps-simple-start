@@ -158,3 +158,15 @@ tox
 tox -r
 ```  
 - We can also add some flake8 commands in tox test environment to ensure that there is no syntax error or unused variable names.
+
+.github>workflows>ci-cd.yaml
+Using this template we can automate ci-cd pipeline on github
+- On every push we can plan to run tests and syntax check.
+- For this github will create an environment and install everything to execute the tests
+- We can also add the commands to deploy the changes on Heroku, for this we will have to add heroku app name and api on github secrets.
+
+Heroku Deployment
+- With app.py and Procfile we are ready for deployment on heroku.
+- Create a app and select github connect.
+- On connect, opt for automatic deployements and tick "wait for ci checks"
+- As github workflows is set, the heroku app will get updated on every push to github repo.
