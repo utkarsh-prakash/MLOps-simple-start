@@ -108,6 +108,14 @@ pytest
 ```bash
 pytest -v
 ```
+- This command will run each file and each function under tests folder.
+- Convension : file name should start with test_ and function name should start with test_
+- Test will pass if the fuction assert True.
+- Also
+```bash
+with pytest.raises(NotInRange):
+```
+If the codelines under this with statement raises NotInRange exception, testcase will pass, If it raises any other error or even if it asserts True, testcase will fail.
 
 tox<br>
 tox can be used to set end to end environment and run our codes on the environment. For running tox, we will have to create tox.ini file.
