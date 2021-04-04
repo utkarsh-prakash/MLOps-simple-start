@@ -170,3 +170,15 @@ Heroku Deployment
 - Create a app and select github connect.
 - On connect, opt for automatic deployements and tick "wait for ci checks"
 - As github workflows is set, the heroku app will get updated on every push to github repo.
+
+<b> main_mlflow Branch </b>
+```bash
+git checkout -b main_mlflow
+```
+shifting to another branch to implement mlflow for model registry/model tracking
+- Create an artifacts folder
+- We need to run a local server to register a model, without this server running model will be logged locally but we can't mark it as production/ staged model.
+mlflow server command
+```bash
+mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./artifacts --host 127.0.0.1 -p 1234
+```
