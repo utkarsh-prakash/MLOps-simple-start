@@ -182,3 +182,12 @@ mlflow server command
 ```bash
 mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./artifacts --host 127.0.0.1 -p 1234
 ```
+
+Mlflow + Model deployment
+- Train and evaluate is part of dvc.yaml and will run through dvc repro
+- Only difference is that now every running version will be logged by mlflow
+- Using log_production_model.py we can get the run with lowest mae
+- We have to just take this model and dump it in prediction_service
+- As log_production_model.py is part of dvc.yaml pipeline, dvc repro will automatically store the model in prediction service with best mae after each run.
+
+Update the github workflow to deploy the model on push on main_mlflow branch...and we are good to go :)
